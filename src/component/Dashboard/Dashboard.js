@@ -19,17 +19,16 @@ export default class Dashboard extends Component{
 
     render(){
         const inventory=this.props.inventoryList;
+        const setSelectedProduct=this.props.setSelectedProduct;
         
         return(
             <div>
                {
                    inventory.map((inventory, i )=>(
                     <Product key={i}
-                    imageUrl={inventory.image_url}
-                    name={inventory.name}
-                    price={inventory.price}
+                    product={inventory}
                     deleteProductFn={this.deleteProduct}
-                    productId={inventory.product_id}/>
+                    setSelectedProduct={setSelectedProduct}/>
                ))
             }
             </div>

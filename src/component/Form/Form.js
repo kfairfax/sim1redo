@@ -8,8 +8,23 @@ export default class Form extends Component {
             imageUrl: '',
             name: '',
             price: 0,
-            currentProductId: null
+            currentProductId: null,
+            isNewProduct: false
         }
+    }
+
+    componentDidUpdate(oldProps){
+        if(oldProps.currentProduct!==this.props.currentProduct){
+            this.setState({currentProductId: this.props.currentProduct.product_id});
+            this.setState({isNewProduct: true});
+            this.setState({
+                imageUrl: this.props.currentProduct.image_url,
+                name: this.props.currentProduct.name,
+                price: this.props.currentProduct.price
+            })
+           
+        }
+        
     }
 
     createProduct() {
@@ -51,7 +66,11 @@ export default class Form extends Component {
                 <input value={price} onChange={(e) => { this.handlePriceChange(e.target.value) }} />
 
                 <button onClick={() => this.handleCancel()}>Cancel</button>
-                <button onClick={()=>this.createProduct()}>Add to Inventory</button>
+                {
+                    this.state.isNewProduct ?
+                    <button onClick={()=>this.createProduct()}>Save Changes</button>:
+                    <button onClick={()=>this.createProduct()}>Add to Inventory</button>
+                }
             </div>
         )
     }

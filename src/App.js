@@ -15,6 +15,7 @@ class App extends Component {
     }
    
     this.getInventory=this.getInventory.bind(this);
+    this.setSelectedProduct=this.setSelectedProduct.bind(this);
   }
 
 componentDidMount(){
@@ -27,12 +28,16 @@ componentDidMount(){
     });
   }
 
+setSelectedProduct(product){
+  this.setState({currentProduct:product})
+}
+
  
   render() {
     return (
       <div>
         <Header />
-        <Dashboard inventoryList={this.state.inventory} getInventory={this.getInventory} />
+        <Dashboard inventoryList={this.state.inventory} getInventory={this.getInventory} setSelectedProduct={this.setSelectedProduct}/>
         <Form getInventory ={this.getInventory} currentProduct={this.state.currentProduct}/>
 
       </div>
