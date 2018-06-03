@@ -18,5 +18,6 @@ massive(process.env.CONNECTION_STRING).then(dbInstance => app.set('db', dbInstan
 app.get('/api/inventory', controller.read);
 app.post('/api/product', controller.create);
 app.delete('/api/product/:id', controller.delete);
+app.put('/api/product/:id', controller.update);
 
 

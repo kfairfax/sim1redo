@@ -32,6 +32,8 @@ setSelectedProduct(product){
   this.setState({currentProduct:product})
 }
 
+
+
  
   render() {
     return (
